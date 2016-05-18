@@ -1,0 +1,42 @@
+{% extends 'h_base.html' %}
+
+{% block content %}
+
+    {% if form.errors %}
+    <p>Not valid email or password</p>
+    {% endif %}
+<div class="container">
+<form method="POST" action="" role="form"  style="margin-top:50px">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-default" name="register" value="Registrer"></input>
+    </form>
+
+</div>
+{% endblock %}
+
+
+{% comment %}
+<form method="POST" action="" role="form"  style="margin-top:50px">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.email.errors }}
+        <label for="id_email">Email:</label> <input id="id_email" maxlength="255" name="email" class="form-control" placeholder="your_email_address@hostname.com" type="email"/>
+    </div>
+    <div class="form-group">
+        <label for="id_password">Password:</label> <input id="id_password" maxlength="128" class="form-control" name="password" placeholder="your password" type="password"/>
+    </div>
+    <div><p>{% if field.errors %} {{ form.password.errors }} {% endif %}</p></div>
+    <div class="form-group>">
+    <p><label for="id_password2">Repeat Password:</label> <input id="id_password2" class="form-control" maxlength="256" name="password2" placeholder="Repeat" type="password"/>
+        <span class="helptext">0-10 characters long</span></p>
+    </div>
+
+    <div class="form-group">
+    <label for="id_first_name">First Name:</label> <input id="id_first_name" maxlength="30" class="form-control" name="first_name" placeholder="optional" type="text"/>
+        </div>
+    <div class="form-group">
+        <label for="id_last_name">Second Name</label><input id="id_last_name" maxlength="30" class="form-control" name="last_name" placeholder="optional" type="text"/>
+    </div>
+    <input type="submit" class="btn btn-primary" name="register">Register</input>
+</form>
+{% endcomment %}

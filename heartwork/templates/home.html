@@ -1,0 +1,24 @@
+{% extends 'h_base.html' %} {% load staticfiles %}
+
+
+
+{% block slideshow %}
+<div id="slider">
+    <figure>
+        {% for product in products %}
+        {% if product.active %}
+
+        <p>{{ product.title }}</p>
+        <img src="{{ product.first_pic }}" alt="fdsfsd">
+
+
+        <figcaption>{{ product.title }}</figcaption>
+        {% endif %}
+
+        {% endfor %}
+    </figure>
+
+</div>
+
+
+{% endblock %}

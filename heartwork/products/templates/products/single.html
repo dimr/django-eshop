@@ -1,0 +1,56 @@
+{% extends 'h_base.html' %}
+{% load url from future %}{% load staticfiles %}
+{% block single_product %}
+
+<script>
+var the_product = "{{ product }}";
+var the_price="{{ product.price }}";
+var url="{{ product.first_pic }}";
+console.log( "GET_THE_PRODUCT "+url);
+
+
+</script>
+<script src="{% static 'js/heartwork.js' %}" type="text/javascript">
+
+</script>
+<div class="container">
+    <div class="page-header">
+        <h1>{{ product.title }}
+            <small>Subtext for header</small>
+        </h1>
+    </div>
+    <h1>{{ product.title }}</h1>
+
+
+    <div class="row">
+      <div class="col-sm-4" id="image_viewer">
+          <img id="the_image" class="img-responsive" src="{{ product.first_pic }}" alt="" style="display:none"/>
+      </div>
+        <div class="col-sm-7 col-sm-offset-1">
+
+
+
+
+
+        </div>
+        <div class="col-sm-7 col-sm-offset-1">
+          <p class="text-right">  {% lorem 5 p %}</p>
+
+
+            <form class='form' method='POST' action='{% url "update_the_cart" product.slug %}'> {% csrf_token %}
+                <input class='btn btn-default btn-block' type='submit' name='qty' value='Add to cart'/>
+                <input class="form-control" name='qty' type='number' value='1' min="1"/>
+                <input type="submit" class="btn btn-primary" name="register"/>
+                <button type="submit" class="btn btn-primary">add to Da cart</button>
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+    <div id='myContainer'></div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+	{% extends 'h_base.html' %} {% load staticfiles %}
+	{% load humanize %}
+
+	   {% block the_products %}
+	<div class="container">
+	<div class="main">
+
+	        {% for product in products %}
+					{% if forloop.first %}<div class="row"> {% endif %}
+				{% if product.active %}
+	        <div class="col-md-6" id="cc">
+
+	            <div class="thumbnail">
+	                <img class="img-responsive" src="{{ product.first_pic }}" class="img-rounded" id="thumbs" width="50%">
+
+
+	                <div class="caption">
+
+
+	                    <p class="product-title">{{ product.title }} {% if product.sales_price != None  %}
+							[On Sale {{ product.sales_price }}]
+							{% endif %}</p>
+					<p class="price"> {{ product.price }}
+
+						</p>
+
+					{% lorem 20 w %}
+
+	                    {# 'will be r eplaced '	<p>{{ product.description|truncatewords:10 }}</p> #}
+	                    <a href="{{ product.get_absolute_url }}"> <h3>{{ product.title }}</h3></a>
+	                    <p><a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Add to cart</a>
+	                    </p>
+
+		                </div>
+
+		            </div>
+	        </div>
+				{% endif %}
+	        {% endfor %}
+	    </div>
+	</div>
+
+</div>
+	 {% endblock %}

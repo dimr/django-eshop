@@ -1,0 +1,14 @@
+{% extends 'h_base.html' %}
+
+{% block content %}
+
+HELLO {{ user }}
+<p>
+{% if user.is_authenticated and not user.is_admin %}
+ hello client {{ user.email }}
+ {% elif user.is_authenticated and user.is_admin %}
+  hello admin {{ user.email }}
+{% endif %}
+</p>
+
+{% endblock %}
